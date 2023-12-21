@@ -41,4 +41,16 @@ public class StudentResource {
 
         return ResponseEntity.created(uri).body(student);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        studentService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Student> update(@PathVariable Long id, @RequestBody Student student){
+        student = studentService.update(id, student);
+        return ResponseEntity.ok().body(student);
+    }
 }
