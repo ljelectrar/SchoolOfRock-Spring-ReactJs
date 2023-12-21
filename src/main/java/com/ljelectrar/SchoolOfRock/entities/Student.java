@@ -19,14 +19,19 @@ public class Student implements Serializable {
     private Long id;
     private String name;
     private Date birthDay;
+    private Double fallWinterSemester;
+    private Double springSummerSemester;
+    private Double average;
 
     public Student() {
     }
 
-    public Student(Long id, String name, Date birthDay) {
+    public Student(Long id, String name, Date birthDay, Double fallWinterSemester, Double springSummerSemester) {
         this.id = id;
         this.name = name;
         this.birthDay = birthDay;
+        this.fallWinterSemester = fallWinterSemester;
+        this.springSummerSemester = springSummerSemester;
     }
 
     public Long getId() {
@@ -51,6 +56,26 @@ public class Student implements Serializable {
 
     public void setBirthDay(Date birthDay) {
         this.birthDay = birthDay;
+    }
+
+    public Double getFallWinterSemester() {
+        return fallWinterSemester;
+    }
+
+    public Double getAverage() {
+        return average;
+    }
+
+    public void setFallWinterSemester(Double fallWinterSemester) {
+        this.fallWinterSemester = fallWinterSemester;
+    }
+
+    public Double getSpringSummerSemester() {
+        return springSummerSemester;
+    }
+
+    public void setSpringSummerSemester(Double springSummerSemester) {
+        this.springSummerSemester = springSummerSemester;
     }
 
     @Override

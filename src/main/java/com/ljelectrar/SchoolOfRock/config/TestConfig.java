@@ -19,12 +19,12 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Student tester01 = new Student(null, "Leandro", new Date());
-        Student tester02 = new Student(null, "Andre", new Date());
-        Student tester03 = new Student(null, "Paschoal", new Date());
-        Student tester04 = new Student(null, "Marquinhos", new Date());
-        Student tester05 = new Student(null, "Júlia", new Date());
-        Student tester06 = new Student(null, "Igor", new Date());
+        Student tester01 = new Student(null, "Leandro", new Date(), 8.0, 9.0);
+        Student tester02 = new Student(null, "Andre", new Date(), 9.0, 10.0);
+        Student tester03 = new Student(null, "Paschoal", new Date(), 10.0, 9.0);
+        Student tester04 = new Student(null, "Marquinhos", new Date(), 8.0, 7.5);
+        Student tester05 = new Student(null, "Júlia", new Date(), 7.0, 9.0);
+        Student tester06 = new Student(null, "Igor", new Date(), 7.5, 7.5);
 
         studentRepository.saveAll(Arrays.asList(tester01, tester02, tester03, tester04, tester05, tester06));
     }
