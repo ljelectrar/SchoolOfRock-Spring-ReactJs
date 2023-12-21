@@ -4,11 +4,10 @@ import com.ljelectrar.SchoolOfRock.entities.Student;
 import com.ljelectrar.SchoolOfRock.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
@@ -29,5 +28,17 @@ public class StudentResource {
     public ResponseEntity<Student> findById(@PathVariable Long id){
         Student student = studentService.findById(id);
         return ResponseEntity.ok().body(student);
+    }
+
+    @PostMapping
+    public ResponseEntity<Student> insert(@RequestBody Student student) {
+        studentService.insert(student);
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(student.getId())
+                .toUri();
+
+        return ResponseEntity.created(uri).body(student);
     }
 }

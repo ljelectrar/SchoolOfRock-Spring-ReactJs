@@ -32,6 +32,7 @@ public class Student implements Serializable {
         this.birthDay = birthDay;
         this.fallWinterSemester = fallWinterSemester;
         this.springSummerSemester = springSummerSemester;
+        average = getAverage();
     }
 
     public Long getId() {
@@ -62,10 +63,6 @@ public class Student implements Serializable {
         return fallWinterSemester;
     }
 
-    public Double getAverage() {
-        return average;
-    }
-
     public void setFallWinterSemester(Double fallWinterSemester) {
         this.fallWinterSemester = fallWinterSemester;
     }
@@ -76,6 +73,10 @@ public class Student implements Serializable {
 
     public void setSpringSummerSemester(Double springSummerSemester) {
         this.springSummerSemester = springSummerSemester;
+    }
+
+    public Double getAverage (){
+        return (springSummerSemester + fallWinterSemester)/2;
     }
 
     @Override

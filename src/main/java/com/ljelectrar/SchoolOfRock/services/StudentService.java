@@ -23,4 +23,8 @@ public class StudentService {
        return student.get();
     }
 
+    public Student insert(Student student){
+        return studentRepository.save(student);
+    }
+
 }
