@@ -14,7 +14,9 @@ public class StudentResource {
 
     @GetMapping
     public ResponseEntity<Student> findAll(){
-        Student leandro = new Student(0L, "Leandro", new Date());
+
+        // tester config, intitial seeding has now a specific class in config package
+        Student leandro = new Student(0L, "Leandro", new Date()); // WARNING
         return ResponseEntity.ok().body(leandro);
     }
 }
