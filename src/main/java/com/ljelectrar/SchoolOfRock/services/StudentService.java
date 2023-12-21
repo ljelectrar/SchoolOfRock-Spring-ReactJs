@@ -2,8 +2,13 @@ package com.ljelectrar.SchoolOfRock.services;
 
 import com.ljelectrar.SchoolOfRock.entities.Student;
 import com.ljelectrar.SchoolOfRock.repositories.StudentRepository;
+import com.ljelectrar.SchoolOfRock.services.exceptions.DatabaseException;
+import com.ljelectrar.SchoolOfRock.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -22,7 +27,7 @@ public class StudentService {
 
     public Student findById(Long id){
        Optional<Student> student = studentRepository.findById(id);
-       return student.get();
+       return student.orElseThrow( () -> new ResourceNotFoundException(id) );
     }
 
     public Student insert(Student student){
@@ -30,13 +35,23 @@ public class StudentService {
     }
 
     public void delete(Long id) {
-        studentRepository.deleteById(id);
+        try{
+            studentRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(id);
+        } catch (DataIntegrityViolationException e){
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     public Student update(Long id, Student student){
+        try {
         Student entity = studentRepository.getReferenceById(id);
         updateData(entity, student);
         return studentRepository.save(entity);
+        } catch (EntityNotFoundException e){
+            throw new ResourceNotFoundException(id);
+        }
     }
 
     private void updateData(Student entity, Student student) {

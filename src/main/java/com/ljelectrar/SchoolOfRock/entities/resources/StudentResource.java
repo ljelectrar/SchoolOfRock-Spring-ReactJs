@@ -53,4 +53,6 @@ public class StudentResource {
         student = studentService.update(id, student);
         return ResponseEntity.ok().body(student);
     }
+
+
 }
