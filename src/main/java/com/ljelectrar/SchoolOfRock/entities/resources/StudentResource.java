@@ -24,12 +24,14 @@ public class StudentResource {
         return ResponseEntity.ok().body(students);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(value = "/{id}")
     public ResponseEntity<Student> findById(@PathVariable Long id){
         Student student = studentService.findById(id);
         return ResponseEntity.ok().body(student);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public ResponseEntity<Student> insert(@RequestBody Student student) {
         studentService.insert(student);
@@ -42,17 +44,17 @@ public class StudentResource {
         return ResponseEntity.created(uri).body(student);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         studentService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping(value = "/{id}")
     public ResponseEntity<Student> update(@PathVariable Long id, @RequestBody Student student){
         student = studentService.update(id, student);
         return ResponseEntity.ok().body(student);
     }
-
-
 }

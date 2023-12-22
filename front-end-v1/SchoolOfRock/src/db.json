@@ -1,0 +1,28 @@
+{
+    "students": [
+      {
+        "id": 1,
+        "name": "Leandro",
+        "birthday": "03/09/1995",
+        "fallWinterSemester": 10,
+        "springSummerSemester": 10,
+        "average": 10
+      },
+      {
+        "id": 2,
+        "name": "Junior",
+        "birthday": "03/09/1996",
+        "fallWinterSemester": "9",
+        "springSummerSemester": "9",
+        "average": "9"
+      },
+      {
+        "id": 3,
+        "name": "Maiara",
+        "birthday": "12/11/1988",
+        "fallWinterSemester": "7",
+        "springSummerSemester": "7",
+        "average": "7"
+      }
+    ]
+  }
